@@ -163,9 +163,50 @@ public class ExampleTest {
         listaInt.add(1);
         listaInt.add(5); 
 
-        List<String> listaString;
-        listaString.toString();
+        assertNotNull(example.convertirAString(listaInt));
+        assertInstanceOf(List.class, example.convertirAString(listaInt));
 
         
+    }
+
+    @Test 
+    public void testCalcularMedia () {
+        List<Integer> listaInt = new ArrayList<>(); 
+        listaInt.add(1);
+        listaInt.add(5); 
+        listaInt.add(9); 
+
+        assertNotNull(example.calcularMedia(listaInt));
+        assertInstanceOf(Double.class, example.calcularMedia(listaInt));
+    }
+
+
+    @Test
+    public void testcalcularMediaVacia() {
+        List<Integer> listaInt = new ArrayList<>();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            example.calcularMedia(listaInt);
+        });
+
+        // Verificar que el mensaje de excepción es correcto
+        String expectedMessage = "La lista no puede ser nula o vacía";
+        String actualMessage = exception.getMessage();
+        assertEquals(expectedMessage, actualMessage, "El mensaje de excepción no coincide");
+    }
+
+
+    @Test
+    public void testcalcularMediaNull() {
+        List<Integer> listaInt = null;
+
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            example.calcularMedia(listaInt);
+        });
+
+        // Verificar que el mensaje de excepción es correcto
+        String expectedMessage = "La lista no puede ser nula o vacía";
+        String actualMessage = exception.getMessage();
+        assertEquals(expectedMessage, actualMessage, "El mensaje de excepción no coincide");
     }
 }
