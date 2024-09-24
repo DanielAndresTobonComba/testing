@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class ExampleTest {
 
     private Example example;
-    private MayorCero mayorCero;
+    //private MayorCero mayorCero;
 
     int resultInt;
     boolean resultBoolean;
@@ -23,7 +23,7 @@ public class ExampleTest {
     @BeforeEach
     public void init() {
         this.example = new Example();
-        this.mayorCero = new MayorCero();
+        //this.mayorCero = new MayorCero();
     }
 
     
@@ -208,5 +208,19 @@ public class ExampleTest {
         String expectedMessage = "La lista no puede ser nula o vacía";
         String actualMessage = exception.getMessage();
         assertEquals(expectedMessage, actualMessage, "El mensaje de excepción no coincide");
+    }
+
+
+    @Test 
+    public void testConvertirListaAString () {
+        List<String> listaString = new ArrayList<>(); 
+        listaString.add("David");
+        listaString.add("Samuel"); 
+        listaString.add("haahah"); 
+
+        assertNotNull(example.convertirListaAString(listaString));
+        assertInstanceOf(String.class, example.convertirListaAString(listaString));
+
+        System.out.println(example.convertirListaAString(listaString));
     }
 }

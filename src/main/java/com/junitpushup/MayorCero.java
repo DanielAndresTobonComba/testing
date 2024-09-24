@@ -1,4 +1,4 @@
-package com.junitpushup;
+/* package com.junitpushup;
 
 public class MayorCero {
     
@@ -6,4 +6,4 @@ public class MayorCero {
         return number > 0;
     }
 
-}
+} */
